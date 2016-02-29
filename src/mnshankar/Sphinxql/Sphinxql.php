@@ -1,6 +1,8 @@
 <?php
 namespace mnshankar\Sphinxql;
 
+use Foolz\SphinxQL\Helper;
+
 class Sphinxql
 {
     protected $library;
@@ -67,5 +69,24 @@ class Sphinxql
     public function raw($query)
     {
         return $this->library->getConnection()->query($query);
+    }
+
+    /**
+     * Return a count of matches found
+     * @return int|null (either number of matches found or null)
+     */
+    public function count()
+    {
+        $meta = Helper::create($this->library->getConnection())->showMeta()->execute();
+
+        foreach ($meta as $entry)
+        {
+            if($entry['Variable_name'] == 'total_found')
+            {
+                return $entry['Value'];
+            }
+        }
+
+        return null;
     }
 }
