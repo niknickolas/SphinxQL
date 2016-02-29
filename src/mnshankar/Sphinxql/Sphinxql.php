@@ -14,7 +14,7 @@ class Sphinxql
      */
     public function query()
     {
-        return $this->library->forge($this->library->getConnection());        
+        return $this->library->create($this->library->getConnection());        
     }
     /**
      * set the hits array
