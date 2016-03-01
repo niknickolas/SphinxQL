@@ -50,7 +50,7 @@ class Sphinxql
             return $matchids;
         }
 
-       if (class_exists($name))
+        if (class_exists($name))
         {
             if ( empty($matchids) )
             {
