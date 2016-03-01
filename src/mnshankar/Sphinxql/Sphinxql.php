@@ -72,6 +72,15 @@ class Sphinxql
     }
 
     /**
+     * Return SphinxQL helper object
+     * @return \Foolz\SphinxQL\Helper
+     */
+    public function helper()
+    {
+        return Helper::create($this->library->getConnection());
+    }
+
+    /**
      * Return a count of matches found
      * @return int|null (either number of matches found or null)
      */
